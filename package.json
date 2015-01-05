@@ -1,0 +1,31 @@
+{
+  "author": {
+    "name": "Tsur",
+    "email": "zurisadai.pabon@gmail.com"
+  },
+  "name": "rae",
+  "version": "0.0.1-beta",
+  "description": "Simple Rae Dictionary Library",
+  "keywords": [
+    "dictionary",
+    "rae",
+    "lema"
+  ],
+  "license": "AGPL-3.0",
+  "main": "./rae.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tsur/node-rae.git"
+  },
+  "bin": {
+    "rae": "./bin/rae"
+  },
+  "dependencies": {
+    "lodash": "~2.4.1",
+    "minimist": "^1.1.0",
+    "q": "^1.0.1",
+    "urllib": "*",
+    "htmlparser": "*",
+    "soupselect": "*"
+  }
+}
