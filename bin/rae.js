@@ -82,7 +82,7 @@
 
         }
 
-        console.log("Etimologia:", lema.ethimology);
+        console.log("Etimologia:", lema.etymology);
 
         _.forEach(lema.definitions, function(definition) {
 

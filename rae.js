@@ -21,7 +21,7 @@
     _options.endpoint = _options.endpoint || 'http://lema.rae.es/drae/srv/';
     _options.qs = _options.qs || 'search?val=';
     _options.examples = _options.examples || true;
-    _options.ethimology = _options.ethimology || true;
+    _options.etymology = _options.etymology || true;
 
     fn(_options);
 
@@ -102,7 +102,7 @@
 
                 } else if (i === 1) {
 
-                  result.ethimology = text;
+                  result.etymology = text;
 
                 } else if (p.attribs.class === 'q') {
 

@@ -1,0 +1,7 @@
+node_modules
+src/backup*
+*.tgz
+npm-debug.log
+.npmignore
+.gitignore
+.travis.yml
