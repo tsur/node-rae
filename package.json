@@ -4,7 +4,7 @@
     "email": "zurisadai.pabon@gmail.com"
   },
   "name": "rae",
-  "version": "0.0.2-beta",
+  "version": "0.0.3-beta",
   "description": "Simple Rae Dictionary Library",
   "keywords": [
     "dictionary",
@@ -18,7 +18,7 @@
     "url": "https://github.com/tsur/node-rae.git"
   },
   "bin": {
-    "rae": "./bin/rae"
+    "rae": "./bin/rae.js"
   },
   "dependencies": {
     "lodash": "~2.4.1",
