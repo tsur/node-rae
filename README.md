@@ -51,6 +51,7 @@ Rae.search("repositorio", function(err, lemas){
 
     });
 });
+```
 
 ## Tests
 
