@@ -54,6 +54,9 @@ Rae.search("repositorio", function(err, lemas){
 
 ## Tests
 
+Para ejecutar los tests:
+
 ```bash
+# Local
 $ make test
 ```
