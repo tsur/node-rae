@@ -1,5 +1,7 @@
 NOTE: This docs are aimed at the Spanish people as it's a node package which allows you to hit the public Royal Spanish Academy Dictionary.
 
+[![Build Status](https://travis-ci.org/Tsur/node-rae.png)](https://travis-ci.org/Tsur/node-rae)
+
 ## Descripcion
 
 node-rae es una pequeña librería mediante la cual puedes acceder al diccionario público que la Real Academia de la Lengua Española proporciona en su [website](http://www.rae.es/)
@@ -56,4 +58,6 @@ Para ejecutar los tests:
 
 ```bash
 $ make test
+# Or with npm
+$ npm test
 ```
