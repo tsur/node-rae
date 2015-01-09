@@ -8,6 +8,9 @@
   var Urllib = require('urllib');
   var htmlparser = require("htmlparser");
   var select = require('soupselect').select;
+  var Iconv = require('iconv').Iconv;
+  var querystring = require('querystring');
+  var util = require('util');
 
   //Variables & Constants
   var Rae = {};
@@ -17,11 +20,11 @@
 
     var _options = _.isObject(options) ? options : {};
 
-    _options.word = word || '';
-    _options.endpoint = _options.endpoint || 'http://lema.rae.es/drae/srv/';
-    _options.qs = _options.qs || 'search?val=';
-    _options.examples = _options.examples || true;
-    _options.etymology = _options.etymology || true;
+    _options.word = (new Iconv('UTF-8', 'ISO-8859-1')).convert(word || '').toString();
+    _options.endpoint = _options.endpoint || 'http://lema.rae.es/drae/srv/search';
+    _options.qs = (_options.qs || 'val');
+    // _options.examples = _options.examples || true;
+    // _options.etymology = _options.etymology || true;
 
     fn(_options);
 
@@ -29,7 +32,11 @@
 
   var makeRequest = function(options, fn) {
 
-    Urllib.request(options.endpoint + options.qs + options.word, {
+    var qs = {};
+
+    qs[options.qs] = options.word;
+
+    Urllib.request(util.format('%s?%s', options.endpoint, querystring.stringify(qs)), {
       method: 'POST'
     }, processResponse(fn));
 
@@ -126,10 +133,10 @@
 
             _.forEach(lemas, function(lema) {
 
-              var qs = select(lema, 'a')[0].attribs.href;
+              var qs = select(lema, 'a')[0].attribs.href.replace('search?', '').split('=');
 
-              promises.push(Rae.search(null, {
-                qs: qs
+              promises.push(Rae.search(qs[1], {
+                qs: qs[0]
               }));
 
             });
@@ -199,11 +206,19 @@
 
     var deferred = Q.defer();
 
+    if (!_.isString(word) || _.isEmpty(word) || (/\d/g).test(word) && _.isEmpty((options || {}).qs)) {
+
+      deferred.reject('word must be an alphabetic and not empty string');
+
+      return deferred.promise;
+
+    }
+
     setOptions(options, word, seekIt(function(err, results) {
 
-      if (err) {
+      if (err || _.isEmpty(results)) {
 
-        return deferred.reject(err.toString() || 'No results found');
+        return deferred.reject((err || '').toString() || 'No results found');
 
       }
 
@@ -211,9 +226,9 @@
 
     }));
 
-    if (_.isFunction(callback)) {
+    if (_.isFunction(options || callback)) {
 
-      return deferred.promise.nodeify(callback);
+      return deferred.promise.nodeify(options || callback);
 
     }
 

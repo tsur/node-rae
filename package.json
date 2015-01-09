@@ -20,12 +20,22 @@
   "bin": {
     "rae": "./bin/rae.js"
   },
+  "devDependencies": {
+    "mocha": "latest",
+    "should": "latest",
+    "should-promised": "0.0.4"
+  },
   "dependencies": {
+    "htmlparser": "~1.7.7",
+    "iconv": "^2.1.4",
     "lodash": "~2.4.1",
     "minimist": "^1.1.0",
     "q": "^1.0.1",
-    "urllib": "~2.2.1",
-    "htmlparser": "~1.7.7",
-    "soupselect": "~0.2.0"
+    "readline": "0.0.5",
+    "soupselect": "~0.2.0",
+    "urllib": "~2.2.1"
+  },
+  "scripts": {
+    "test": "make test"
   }
 }

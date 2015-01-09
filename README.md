@@ -37,19 +37,16 @@ También puedes utilizar la libería rae en tus propios proyectos. Más ejemplos
 var Rae = require('rae');
 
 // Promises are also available
-Rae.search("repositorio", function(err, lemas){
-	
-	lemas.forEach(function(lema) {
+Rae.search("repositorio", function(err, lemas) {
 
-        console.log("Etimologia:", lema.etymology);
+  if (err) {
 
-        lema.definitions.forEach(function(definition) {
+    return console.error(err);
 
-          console.log(definition);
+  }
 
-        });
+  lemas.forEach(console.log);
 
-    });
 });
 ```
 
