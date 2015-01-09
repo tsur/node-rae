@@ -4,11 +4,7 @@ var outputResults = function(lema) {
 
   console.log("Etimologia:", lema.etymology);
 
-  lema.definitions.forEach(function(definition) {
-
-    console.log(definition);
-
-  });
+  lema.definitions.forEach(console.log);
 
 };
 
