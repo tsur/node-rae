@@ -15,16 +15,15 @@
     logger.log(
 
       '\n',
-      'Description:\tDiccionario Rae',
+      'Description:\tRae Dictionary',
       '\n\n Uso:',
-      '\n\trae <termino>',
-      '\n\trae --palabra <palabra>',
-      '\n\trae --termino <termino>',
-      '\n\trae --palabra <palabra> --endpoint <url>',
+      '\n\trae <word>',
+      '\n\trae -w <word>',
+      '\n\trae --word <word> --endpoint <url>',
       '\n\n Opciones:',
-      '\n\t-t, --termino\n\t\tEl término a buscar en el diccionario',
-      '\n\t-p, --palabra\n\t\tEl término a buscar en el diccionario',
+      '\n\t-w, --word\n\t\tEl término a buscar en el diccionario',
       '\n\t-e, --endpoint\n\t\tRae URL de búsqueda',
+      '\n\t-d, --debug\n\t\tModo debug. Útil para detectar errores',
       '\n\n'
     );
 
@@ -43,8 +42,26 @@
   }
 
   // Dependences
+  var Readline = require('readline');
   var Rae = require('./../rae');
   var options = {};
+
+  var readLine = function(prompt, cb) {
+
+    var rl = Readline.createInterface(process.stdin, process.stdout);
+
+    rl.setPrompt(prompt + '>> ');
+
+    rl.prompt();
+
+    rl.on('line', function(line) {
+
+      cb(line.trim());
+      rl.close();
+
+    });
+
+  };
 
   var printError = function(logger) {
 
@@ -69,20 +86,89 @@
 
   var printResponse = function(lemas) {
 
+    if (_.isArray(lemas) && lemas.length > 1) {
+
+      options.detach = true;
+
+      console.log('\n Hemos encontrados varios resultados para esta entrada\n');
+
+      var handlers = {};
+
+      _.forEach(lemas, function(lema, i) {
+
+        console.log('\t' + (i + 1) + '. ' + lema.lema.replace('.', '').trim());
+
+        handlers[i + 1] = function() {
+
+          console.log();
+
+          console.log('Termino:', lema.lema.replace('.', '').trim());
+
+          if (!_.isEmpty(lema.etymology)) {
+
+            console.log("Etimologia:", lema.etymology);
+
+          }
+
+          _.forEach(lema.definitions, function(definition) {
+
+            console.log(definition);
+
+          });
+
+          console.log();
+
+        };
+
+      });
+
+      console.log('\n Introduzca el número del termino que desee consultar y pulse Enter');
+      console.log(' Escriba cualquier otro carácter para salir\n');
+
+      var processLine = function(result) {
+
+        if (_.isFunction(handlers[result])) {
+
+          handlers[result]();
+
+        } else {
+
+          process.exit(0);
+
+        }
+
+      }
+
+      return readLine('', processLine);
+    }
+
     if (_.isArray(lemas)) {
 
       console.log();
 
       _.forEach(lemas, function(lema) {
 
-        if (options.verbose) {
+        if (options.debug) {
 
-          console.log("Id:", lema.id);
-          console.log("Lema:", lema.lema);
+          if (!_.isEmpty(lema.id)) {
+
+            console.log("Id:", lema.id);
+
+          };
+
+          if (!_.isEmpty(lema.lema)) {
+
+            console.log("Lema:", lema.lema);
+
+          };
 
         }
 
-        console.log("Etimologia:", lema.etymology);
+        if (!_.isEmpty(lema.etymology)) {
+
+          console.log("Etimologia:", lema.etymology);
+
+        }
 
         _.forEach(lema.definitions, function(definition) {
 
@@ -106,7 +192,7 @@
   (function(options) {
 
     // Word/Term
-    var word = argv['t'] || argv['termino'] || argv['p'] || argv['palabra'] || argv._[0];
+    var word = argv['w'] || argv['word'] || argv._[0];
 
     if (_.isEmpty(word)) {
 
@@ -114,10 +200,10 @@
 
     }
 
-    // Verbose Output
-    options.verbose = argv['v'] || argv['verbose'];
+    // Debug Output
+    options.debug = argv['d'] || argv['debug'];
 
-    if (options.verbose) {
+    if (options.debug) {
 
       console.time('lookupTime');
 
@@ -125,13 +211,17 @@
 
     Rae.search(word, options).then(printResponse).fail(printError).done(function() {
 
-      if (options.verbose) {
+      if (options.debug) {
 
         console.time('lookupTime');
 
       }
 
-      process.exit(0);
+      if (!options.detach) {
+
+        process.exit(0);
+
+      }
 
     });
 
