@@ -58,4 +58,6 @@ Para ejecutar los tests:
 
 ```bash
 $ make test
+# Or with npm
+$ npm test
 ```
