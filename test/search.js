@@ -1,9 +1,8 @@
-var should = require('should'),
-  Rae = require('../rae');
-
-require('should-promised');
+const should = require('should');
+const RaeInstace = require('../Rae.js');
 
 describe('Rae Dictionary Library: Search method', function() {
+  const Rae = new RaeInstace();
 
   before(function(done) {
 
