@@ -43,7 +43,7 @@
 
   // Dependences
   var Readline = require('readline');
-  var Rae = require('./../rae');
+  var Rae = require('./../Rae');
   var options = {};
 
   var readLine = function(prompt, cb) {

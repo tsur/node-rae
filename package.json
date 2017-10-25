@@ -22,8 +22,7 @@
   },
   "devDependencies": {
     "mocha": "latest",
-    "should": "latest",
-    "should-promised": "0.0.4"
+    "should": "latest"
   },
   "dependencies": {
     "htmlparser": "~1.7.7",
