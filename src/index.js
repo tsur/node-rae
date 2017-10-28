@@ -13,11 +13,11 @@ import { HTTP_CLIENT } from "helpers/constants";
  * const casa = await myRaeClient.search('casa');
  */
 class RaeClient {
-  static create(type = HTTP_CLIENT, options) {
+  static create(type = HTTP_CLIENT) {
     switch (type) {
       case HTTP_CLIENT:
       default:
-        return HTTPRaeClient(options);
+        return HTTPRaeClient();
     }
   }
 

@@ -1,6 +1,8 @@
 NOTE: This docs are aimed at the Spanish people as it's a node package which allows you to hit the public Royal Spanish Academy Dictionary.
 
 [![Build Status](https://travis-ci.org/Tsur/node-rae.png)](https://travis-ci.org/Tsur/node-rae)
+[![MIT License](https://img.shields.io/npm/l/es6-lib-template.svg?style=flat-square)](http://opensource.org/licenses/MIT)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 ## Descripcion
 
@@ -35,21 +37,12 @@ Etimologia:  (Del lat. repositorĭum, armario, alacena).
 También puedes utilizar la libería rae en tus propios proyectos. Más ejemplos disponibles en el directorio examples.
 
 ```js
-
-var Rae = require('rae');
+import RaeClient from 'rae';
 
 // Promises are also available
-Rae.search("repositorio", function(err, lemas) {
-
-  if (err) {
-
-    return console.error(err);
-
-  }
-
-  lemas.forEach(console.log);
-
-});
+RaeClient.create()
+  .search("repositorio")
+  .then((definition) => console.log(definition));
 ```
 
 ## Tests
@@ -57,7 +50,5 @@ Rae.search("repositorio", function(err, lemas) {
 Para ejecutar los tests:
 
 ```bash
-$ make test
-# Or with npm
-$ npm test
+$ npm run test
 ```
