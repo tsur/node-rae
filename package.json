@@ -4,37 +4,48 @@
     "email": "zurisadai.pabon@gmail.com"
   },
   "name": "rae",
-  "version": "0.0.4-beta",
+  "version": "1.0.0",
   "description": "Simple Rae Dictionary Library",
   "keywords": [
     "dictionary",
     "rae",
+    "spanish",
+    "words",
+    "definition",
     "lema"
   ],
-  "license": "AGPL-3.0",
-  "main": "./rae.js",
+  "license": "MIT",
+  "main": "build/lib.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/tsur/node-rae.git"
   },
   "bin": {
-    "rae": "./bin/rae.js"
+    "rae": "build/cli.js"
   },
   "devDependencies": {
-    "mocha": "latest",
-    "should": "latest"
+    "babel-loader": "^7.1.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "cheerio": "^1.0.0-rc.2",
+    "circular-dependency-plugin": "^4.2.1",
+    "exports-loader": "^0.6.4",
+    "htmlparser2": "^3.9.2",
+    "imports-loader": "^0.7.1",
+    "isomorphic-fetch": "^2.2.1",
+    "lodash": "^4.17.4",
+    "mocha": "^4.0.1",
+    "should": "^13.1.2",
+    "superagent": "^3.8.0",
+    "webpack": "^3.8.1"
   },
-  "dependencies": {
-    "htmlparser": "~1.7.7",
-    "iconv": "^2.1.4",
-    "lodash": "~2.4.1",
-    "minimist": "^1.1.0",
-    "q": "^1.0.1",
-    "readline": "0.0.5",
-    "soupselect": "~0.2.0",
-    "urllib": "~2.2.1"
-  },
+  "dependencies": {},
   "scripts": {
-    "test": "make test"
+    "pretest": "npm run build:lib",
+    "test": "mocha --require babel-register --timeout 5000 test",
+    "build:lib": "webpack --config internals/webpack/lib.js --color -p --progress",
+    "build:cli": "webpack --config internals/webpack/cli.js --color -p --progress",
+    "build": "npm run build:lib && npm run build:cli"
   }
 }
