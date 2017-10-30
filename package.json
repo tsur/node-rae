@@ -35,6 +35,7 @@
     "htmlparser2": "^3.9.2",
     "imports-loader": "^0.7.1",
     "isomorphic-fetch": "^2.2.1",
+    "jest-cli": "^21.2.1",
     "lodash": "^4.17.4",
     "mocha": "^4.0.1",
     "readline": "^1.3.0",
@@ -47,22 +48,56 @@
   },
   "dependencies": {},
   "scripts": {
-    "pretest": "npm run build:lib",
-    "test": "mocha --require babel-register --timeout 5000 test",
+    "pretest": "rimraf coverage",
+    "test": "cross-env NODE_ENV=test jest --coverage --no-cache",
+    "test:watch": "cross-env NODE_ENV=test jest --watch --no-cache",
     "build:lib":
-      "rimraf build/lib.js && webpack --config internals/webpack/lib.js --color -p --progress",
+      "webpack --config internals/webpack/lib.js --color -p --progress",
     "build:cli":
-      "rimraf build/cli.js && webpack --config internals/webpack/cli.js --color -p --progress",
-    "build": "rimraf build && npm run build:lib && npm run build:cli",
+      "webpack --config internals/webpack/cli.js --color -p --progress",
+    "prebuild": "rimraf build",
+    "build": "npm run build:lib && npm run build:cli",
     "lint": "eslint . --ignore-path .gitignore --ignore-pattern internals",
-    "validate": "npm run build && npm run test && npm run lint",
+    "validate": "npm run lint && npm run build && npm run test",
     "semantic-release":
       "semantic-release pre && npm publish && semantic-release post"
   },
   "config": {
     "ghooks": {
-      "pre-push": "npm run validate",
+      "pre-push": "npm run lint",
       "commit-msg": "validate-commit-msg"
     }
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/cli/**/*.js",
+      "!src/__tests__/**/*.js",
+      "!build/**/*.js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/internals/",
+      "/examples/",
+      "/build/"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/internals/",
+      "/examples/",
+      "/build/"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 70,
+        "functions": 70,
+        "lines": 70,
+        "statements": 70
+      }
+    },
+    "moduleDirectories": ["node_modules", "src"],
+    "setupTestFrameworkScriptFile":
+      "<rootDir>/internals/testing/test-bundler.js",
+    "transformIgnorePatterns": ["<rootDir>/node_modules/"]
   }
 }

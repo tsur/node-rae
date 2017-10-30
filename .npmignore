@@ -1,7 +1,7 @@
 node_modules
 src
 internals
-test
+__tests__
 coverage
 .vscode
 .nyc_output

@@ -1,13 +1,11 @@
 import 'should';
-import RaeClient from '../build/lib';
+// @todo importing from build has some awful impact on coverage. Check it out!
+// import RaeClient from '../build/lib';
+import RaeClient from '../';
 
 describe('Rae Dictionary Library: Search method', () => {
   const raeClient = RaeClient.create();
   const errorMsg = (msg) => `"${msg}" word param provided must be a valid string`;
-
-  before((done) => {
-    done();
-  });
 
   it('should fail if word param is not an string: null', () =>
     raeClient.search(null).should.be.rejectedWith(Error, {
@@ -56,8 +54,4 @@ describe('Rae Dictionary Library: Search method', () => {
 
   it('should success if word param is a single existing real lema', () =>
     raeClient.search('repositorio').should.be.fulfilled());
-
-  after((done) => {
-    done();
-  });
 });
