@@ -50,5 +50,5 @@ RaeClient.create()
 Para ejecutar los tests:
 
 ```bash
-$ npm run test
+$ npm test
 ```

@@ -1,18 +1,16 @@
 import { getOptions, areOptionsValid, shouldDisplayHelp, printHelp, search } from 'cli/utils';
-  
+
 // Run it!
-(function() {
-  
+(function runCLI() {
   const options = getOptions();
 
-  if(!areOptionsValid(options)){
+  if (!areOptionsValid(options)) {
     return printHelp();
   }
 
-  if(shouldDisplayHelp(options)){
+  if (shouldDisplayHelp(options)) {
     return printHelp();
   }
 
-  search(options);
-
-})();
+  return search(options);
+}());

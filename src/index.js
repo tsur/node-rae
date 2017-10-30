@@ -1,5 +1,5 @@
-import HTTPRaeClient from "clients/http";
-import { HTTP_CLIENT } from "helpers/constants";
+import HTTPRaeClient from 'clients/http';
+import { HTTP_CLIENT } from 'helpers/constants';
 
 /**
  * Rae Client Factory
@@ -7,7 +7,7 @@ import { HTTP_CLIENT } from "helpers/constants";
  * Rae Clients whether based on different protocols as HTTP, WS, SSE, ... etc
  * or whatever other variable we may need later on. For now, it just returns
  * a basic HTTP Rae Client.
- * @example 
+ * @example
  * import RaeClient from 'rae';
  * const myRaeClient = RaeClient.create();
  * const casa = await myRaeClient.search('casa');

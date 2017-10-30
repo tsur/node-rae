@@ -1,7 +1,7 @@
-var RaeClient = require("../build/lib.js");
+const RaeClient = require('../build/lib.js');
 
 RaeClient.create()
-  .search("casa")
-  .then(result => {
+  .search('casa')
+  .then((result) => {
     console.log(result);
   });

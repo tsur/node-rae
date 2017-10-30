@@ -1,30 +1,33 @@
-import { isAWord } from "helpers/utils";
-import request from "clients/http/request";
-import { NotValidWordError } from "clients/http/errors";
-import { RAE_FETCH_ACTION, RAE_OFFICIAL_HTTP_ENDPOINT } from "helpers/constants";
+import { isAWord } from 'helpers/utils';
+import request from 'clients/http/request';
+import { NotValidWordError } from 'clients/http/errors';
+import { RAE_FETCH_ACTION, RAE_OFFICIAL_HTTP_ENDPOINT } from 'helpers/constants';
 
 /**
  * RAE HTTP Client
  * This is an RAE client that uses the public http://www.rae.es API
  */
 export class HTTPRaeClient {
-  search(word) {
+  static search(word) {
     return new Promise(async (resolve, reject) => {
-      if (!isAWord(word)) {
-        return reject(NotValidWordError(word));
-      }
       try {
-        resolve(await request(word));
+        if (!isAWord(word)) {
+          return reject(NotValidWordError(word));
+        }
+        return resolve(await request(word));
       } catch (error) {
-        reject(error);
+        return reject(error);
       }
     });
   }
 
-  fetch(id) {
+  static fetch(id) {
     return new Promise(async (resolve, reject) => {
       try {
-        resolve(await request(id, {action: RAE_FETCH_ACTION, endpoint: RAE_OFFICIAL_HTTP_ENDPOINT}));
+        resolve(await request(id, {
+          action: RAE_FETCH_ACTION,
+          endpoint: RAE_OFFICIAL_HTTP_ENDPOINT,
+        }));
       } catch (error) {
         reject(error);
       }
@@ -32,4 +35,4 @@ export class HTTPRaeClient {
   }
 }
 
-export default () => new HTTPRaeClient();
+export default () => HTTPRaeClient;

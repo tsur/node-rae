@@ -2,9 +2,13 @@ node_modules
 src
 internals
 test
+coverage
+.vscode
+.nyc_output
 yarn.lock
 .github
 .travis.yml
+.babelrc
 *.tgz
 npm-debug.log
 .npmignore

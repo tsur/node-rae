@@ -6,14 +6,7 @@
   "name": "rae",
   "version": "1.0.0",
   "description": "Simple Rae Dictionary Library",
-  "keywords": [
-    "dictionary",
-    "rae",
-    "spanish",
-    "words",
-    "definition",
-    "lema"
-  ],
+  "keywords": ["dictionary", "rae", "spanish", "words", "definition", "lema"],
   "license": "MIT",
   "main": "build/lib.js",
   "repository": {
@@ -21,32 +14,55 @@
     "url": "https://github.com/tsur/node-rae.git"
   },
   "bin": {
-    "rae": "build/cli.js"
+    "rae": "./build/cli.js"
   },
   "devDependencies": {
+    "babel-eslint": "^8.0.1",
     "babel-loader": "^7.1.2",
     "babel-polyfill": "^6.26.0",
     "babel-preset-latest": "^6.24.1",
     "babel-register": "^6.26.0",
     "cheerio": "^1.0.0-rc.2",
     "circular-dependency-plugin": "^4.2.1",
+    "cross-env": "^5.1.1",
+    "eslint": "^4.10.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-import-resolver-webpack": "^0.8.3",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-mocha": "^4.11.0",
     "exports-loader": "^0.6.4",
+    "ghooks": "^2.0.0",
     "htmlparser2": "^3.9.2",
     "imports-loader": "^0.7.1",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.4",
     "mocha": "^4.0.1",
     "readline": "^1.3.0",
+    "rimraf": "^2.6.2",
+    "semantic-release": "^8.2.0",
     "should": "^13.1.2",
-    "superagent": "^3.8.0",
-    "webpack": "^3.8.1"
+    "validate-commit-msg": "^2.14.0",
+    "webpack": "^3.8.1",
+    "webpack-bundle-analyzer": "^2.9.0"
   },
   "dependencies": {},
   "scripts": {
     "pretest": "npm run build:lib",
     "test": "mocha --require babel-register --timeout 5000 test",
-    "build:lib": "webpack --config internals/webpack/lib.js --color -p --progress",
-    "build:cli": "webpack --config internals/webpack/cli.js --color -p --progress",
-    "build": "npm run build:lib && npm run build:cli"
+    "build:lib":
+      "rimraf build/lib.js && webpack --config internals/webpack/lib.js --color -p --progress",
+    "build:cli":
+      "rimraf build/cli.js && webpack --config internals/webpack/cli.js --color -p --progress",
+    "build": "rimraf build && npm run build:lib && npm run build:cli",
+    "lint": "eslint . --ignore-path .gitignore --ignore-pattern internals",
+    "validate": "npm run build && npm run test && npm run lint",
+    "semantic-release":
+      "semantic-release pre && npm publish && semantic-release post"
+  },
+  "config": {
+    "ghooks": {
+      "pre-push": "npm run validate",
+      "commit-msg": "validate-commit-msg"
+    }
   }
 }
