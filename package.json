@@ -49,8 +49,8 @@
   "dependencies": {},
   "scripts": {
     "pretest": "rimraf coverage",
-    "test": "cross-env NODE_ENV=test jest --coverage --no-cache",
-    "test:watch": "cross-env NODE_ENV=test jest --watch --no-cache",
+    "test": "cross-env NODE_ENV=test jest --coverage --no-cache __tests__",
+    "test:watch": "cross-env NODE_ENV=test jest --watch --no-cache __tests__",
     "build:lib":
       "webpack --config internals/webpack/lib.js --color -p --progress",
     "build:cli":
