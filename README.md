@@ -7,9 +7,11 @@ NOTE: This docs are aimed at the Spanish people as it's a node package which all
 
 ## Descripcion
 
-node-rae es una pequeña librería mediante la cual puedes acceder al diccionario público que la Real Academia de la Lengua Española proporciona en su [website](http://www.rae.es/)
+rae es una pequeña librería mediante la cual puedes acceder al diccionario público que la Real Academia de la Lengua Española proporciona en su [website](http://www.rae.es/)
 
 ## Instalación
+
+[![NPM](https://nodei.co/npm/rae.png)](https://nodei.co/npm/rae/)
 
 Puedes instalar node-rae tanto de forma local como de forma global
 

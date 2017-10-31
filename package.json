@@ -98,6 +98,7 @@
     "moduleDirectories": ["node_modules", "src"],
     "setupTestFrameworkScriptFile":
       "<rootDir>/internals/testing/test-bundler.js",
+    "testMatch": ["**/__tests__/**/*.js"],
     "transformIgnorePatterns": ["<rootDir>/node_modules/"]
   }
 }
