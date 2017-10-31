@@ -78,8 +78,7 @@
     "coveragePathIgnorePatterns": [
       "/node_modules/",
       "/internals/",
-      "/examples/",
-      "/build/"
+      "/examples/"
     ],
     "testPathIgnorePatterns": ["/node_modules/", "/internals/", "/examples/"],
     "coverageThreshold": {
