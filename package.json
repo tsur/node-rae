@@ -49,8 +49,8 @@
   "dependencies": {},
   "scripts": {
     "pretest": "rimraf coverage",
-    "test": "cross-env NODE_ENV=test jest --coverage --no-cache __tests__",
-    "test:watch": "cross-env NODE_ENV=test jest --watch --no-cache __tests__",
+    "test": "cross-env NODE_ENV=test jest --coverage",
+    "test:watch": "cross-env NODE_ENV=test jest --watch --no-cache",
     "build:lib":
       "webpack --config internals/webpack/lib.js --color -p --progress",
     "build:cli":
@@ -81,12 +81,7 @@
       "/examples/",
       "/build/"
     ],
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/internals/",
-      "/examples/",
-      "/build/"
-    ],
+    "testPathIgnorePatterns": ["/node_modules/", "/internals/", "/examples/"],
     "coverageThreshold": {
       "global": {
         "branches": 70,
@@ -98,7 +93,6 @@
     "moduleDirectories": ["node_modules", "src"],
     "setupTestFrameworkScriptFile":
       "<rootDir>/internals/testing/test-bundler.js",
-    "testMatch": ["**/__tests__/**/*.js"],
     "transformIgnorePatterns": ["<rootDir>/node_modules/"]
   }
 }
