@@ -1,7 +1,7 @@
 import 'should';
 // @todo importing from build has some awful impact on coverage. Check it out!
 // import RaeClient from '../build/lib';
-import RaeClient from '../';
+import RaeClient from '../src';
 
 describe('Rae Dictionary Library: Search method', () => {
   const raeClient = RaeClient.create();
