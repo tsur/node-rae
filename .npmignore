@@ -5,12 +5,12 @@ __tests__
 coverage
 .vscode
 .nyc_output
-yarn.lock
 .github
 .travis.yml
 .babelrc
 *.tgz
-npm-debug.log
 .npmignore
 .gitignore
 .travis.yml
+yarn.lock
+npm-debug.log

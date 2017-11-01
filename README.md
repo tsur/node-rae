@@ -1,4 +1,3 @@
-NOTE: This docs are aimed at the Spanish people as it's a node package which allows you to hit the public Royal Spanish Academy Dictionary.
 
 [![Build Status](https://travis-ci.org/Tsur/node-rae.png)](https://travis-ci.org/Tsur/node-rae)
 [![MIT License](https://img.shields.io/npm/l/es6-lib-template.svg?style=flat-square)](http://opensource.org/licenses/MIT)
@@ -7,7 +6,9 @@ NOTE: This docs are aimed at the Spanish people as it's a node package which all
 
 ## Descripcion
 
-rae es una pequeña librería mediante la cual puedes acceder al diccionario público que la Real Academia de la Lengua Española proporciona en su [website](http://www.rae.es/)
+**NOTE:** Access English Docs [Here](docs/en/README.md)
+
+Rae es una pequeña librería mediante la cual puedes acceder al diccionario público que la Real Academia de la Lengua Española proporciona en su [website](http://www.rae.es/).
 
 ## Instalación
 
