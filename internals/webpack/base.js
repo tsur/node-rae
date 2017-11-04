@@ -25,6 +25,24 @@ module.exports = (options) => ({
         test: /\.json$/,
         loader: 'json-loader',
       },
+      {
+        test: /\.html$/,
+        loader: 'html-loader',
+      },
+      {
+        // Do not transform vendor's CSS with CSS-modules
+        // The point is that they remain in global scope.
+        // Since we require these CSS files in our JS or CSS files,
+        // they will be a part of our compilation either way.
+        // So, no need for ExtractTextPlugin here.
+        test: /\.css$/,
+        exclude: [/node_modules/],
+        loaders: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(jpg|png|gif)$/,
+        loaders: ['file-loader'],
+      },
     ],
   },
   plugins: options.plugins.concat([
@@ -45,5 +63,5 @@ module.exports = (options) => ({
     modules: ['src', 'node_modules'],
     extensions: ['.js'],
   },
-  target: 'node', // Use 'web; to make web variables accessible to webpack, e.g. window
+  target: options.target || 'node', // Use 'web; to make web variables accessible to webpack, e.g. window
 });

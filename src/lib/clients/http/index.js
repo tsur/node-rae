@@ -1,6 +1,6 @@
 import { isAWord } from 'helpers/utils';
-import request from 'clients/http/request';
-import { NotValidWordError } from 'clients/http/errors';
+import request from 'lib/clients/http/request';
+import { NotValidWordError } from 'lib/clients/http/errors';
 import { RAE_FETCH_ACTION, RAE_OFFICIAL_HTTP_ENDPOINT } from 'helpers/constants';
 
 /**

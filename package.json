@@ -25,13 +25,19 @@
     "cheerio": "^1.0.0-rc.2",
     "circular-dependency-plugin": "^4.2.1",
     "cross-env": "^5.1.1",
+    "css-loader": "^0.28.7",
     "eslint": "^4.10.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-import-resolver-webpack": "^0.8.3",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-mocha": "^4.11.0",
     "exports-loader": "^0.6.4",
+    "express": "^4.16.2",
+    "file-loader": "^1.1.5",
+    "gh-pages": "^1.0.0",
     "ghooks": "^2.0.0",
+    "html-loader": "^0.5.1",
+    "html-webpack-plugin": "^2.30.1",
     "htmlparser2": "^3.9.2",
     "imports-loader": "^0.7.1",
     "isomorphic-fetch": "^2.2.1",
@@ -42,6 +48,7 @@
     "rimraf": "^2.6.2",
     "semantic-release": "^8.2.0",
     "should": "^13.1.2",
+    "style-loader": "^0.19.0",
     "validate-commit-msg": "^2.14.0",
     "webpack": "^3.8.1",
     "webpack-bundle-analyzer": "^2.9.0"
@@ -55,10 +62,19 @@
       "webpack --config internals/webpack/lib.js --color -p --progress",
     "build:cli":
       "webpack --config internals/webpack/cli.js --color -p --progress",
+    "build:site":
+      "webpack --config internals/webpack/site.js --color -p --progress",
+    "build:server":
+      "webpack --config internals/webpack/server.js --color -p --progress",
     "prebuild": "rimraf build",
-    "build": "npm run build:lib && npm run build:cli",
+    "build":
+      "npm run build:lib && npm run build:cli && npm run build:site && npm run build:server",
     "lint": "eslint . --ignore-path .gitignore --ignore-pattern internals",
-    "validate": "npm run lint && npm run build && npm run test",
+    "deploy:site": "node ./internals/scripts/gh-pages.js",
+    "deploy:server": "git push heroku master",
+    "predeploy": "npm run build",
+    "deploy": "npm run deploy:server && npm run deploy:site",
+    "validate": "npm run lint && npm run build:cli && npm run test",
     "semantic-release":
       "semantic-release pre && npm publish && semantic-release post"
   },
@@ -72,6 +88,8 @@
     "collectCoverageFrom": [
       "src/**/*.js",
       "!src/cli/**/*.js",
+      "!src/server/**/*.js",
+      "!src/site/**/*.js",
       "!src/__tests__/**/*.js",
       "!build/**/*.js"
     ],

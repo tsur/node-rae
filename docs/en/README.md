@@ -1,12 +1,13 @@
 
 [![Build Status](https://travis-ci.org/Tsur/node-rae.png)](https://travis-ci.org/Tsur/node-rae)
 [![MIT License](https://img.shields.io/npm/l/es6-lib-template.svg?style=flat-square)](http://opensource.org/licenses/MIT)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Coverage Status](https://coveralls.io/repos/github/Tsur/node-rae/badge.svg?branch=inestable)](https://coveralls.io/github/Tsur/node-rae?branch=inestable)
 
 ## Description
 
-Rae provides a tiny library to access the well-known spanish RAE dictionary programatically. It exposes an easy API for fetching words and a commnad line utility for looking up words in the [RAE dictionary](http://www.rae.es/).
+Rae provides a tiny library to access the well-known spanish RAE dictionary programatically. It exposes an easy API for fetching words and a commnad line utility for looking up words in the [official RAE dictionary](http://www.rae.es/). Access the demo site [here](https://tsur.github.io/rae)
 
 ## Setup
 
@@ -38,19 +39,16 @@ Etimologia:  (Del lat. repositorĭum, armario, alacena).
  1. m. Lugar donde se guarda algo.
 ```
 
-# Using in your own project
+## Using in your own project
 
 In order to use Rae in your personal project, you first need to import it. Rae exports a RaeClient which is a factory you can use to instantiate Rae clients. By default, it uses an HTTP Rae client. All clients have a search function to which you just need to pass in the word looking up for. Check the example below.
 
 ```js
-import RaeClient from 'rae';
+import Rae from 'rae';
 
-console.log(Rae.Client.help());
+const raeClient = Rae.create();
 
-// Promises are also available
-RaeClient.create()
-  .search("repositorio")
-  .then((definition) => console.log(definition));
+raeClient.search("repositorio").then((match) => ...);
 ```
 
 ## Contributing

@@ -1,4 +1,4 @@
-import HTTPRaeClient from 'clients/http';
+import HTTPRaeClient from 'lib/clients/http';
 import { HTTP_CLIENT } from 'helpers/constants';
 
 /**

@@ -1,6 +1,6 @@
 import cheerio from 'cheerio';
 import { RAE_FETCH_ACTION } from 'helpers/constants';
-import { NoChallengeScriptFoundError, ParserError } from 'clients/http/errors';
+import { NoChallengeScriptFoundError, ParserError } from 'lib/clients/http/errors';
 
 function parseAuth(domAsString) {
   const formData = {};

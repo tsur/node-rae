@@ -1,7 +1,7 @@
 import { isEmpty, keys } from 'lodash';
 import Readline from 'readline';
 import minimist from 'minimist';
-import RaeClient from 'index';
+import RaeClient from 'lib';
 
 const dictionary = {};
 
@@ -65,7 +65,7 @@ export function printHelp(logger = console, exit = true) {
     '\n\trae --palabra <palabra>',
     '\n\n Opciones:',
     '\n\t-p, --palabra\n\t\tEl término/palabra a buscar en el diccionario',
-    '\n\n',
+    '\n\n'
   );
   if (exit) {
     process.exit(0);
