@@ -75,8 +75,9 @@
       "rimraf build && cross-env SERVICE_URL=https://rae-api.herokuapp.com/ webpack --config internals/webpack/site.js --color -p --progress",
     "deploy:site": "node ./internals/scripts/gh-pages.js",
     "predeploy:server":
-      "rimraf build && cross-env SERVER_PORT=8080 SERVER_CORS=\"https://tsur.github.io, http://zuri.website\" webpack --config internals/webpack/server.js --color -p --progress && cp internals/heroku/package.json build",
-    "deploy:server": "git subtree push --prefix build heroku master",
+      "rimraf build && cross-env SERVER_PORT=8080 SERVER_CORS=\"https://tsur.github.io, http://zuri.website\" webpack --config internals/webpack/server.js --color -p --progress",
+    "deploy:server":
+      "git clone https://git.heroku.com/rae-api.git && cp build/server.js rae-api && cp internals/heroku/package.json rae-api && cp internals/heroku/Procfile rae-api && cd rae-api && git commit -am \"Deploy to heroku\" && git push origin master && cd .. && rimraf rae-api",
     "deploy": "npm run deploy:server && npm run deploy:site",
     "validate": "npm run lint && npm run build:cli && npm run test",
     "semantic-release":

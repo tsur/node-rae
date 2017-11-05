@@ -38,4 +38,4 @@ app.use((req, res, next) => {
 app.get('/search/:word', search);
 app.get('/fetch/:id', fetch);
 
-app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));
+app.listen(process.env.PORT || PORT, () => console.log(`Example app listening on port ${PORT}!`));

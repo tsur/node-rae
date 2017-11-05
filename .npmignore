@@ -1,6 +1,7 @@
 node_modules
 src
 internals
+rae-api
 __tests__
 coverage
 .vscode
