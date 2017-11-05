@@ -7,7 +7,7 @@
 
 ## Description
 
-Rae provides a tiny library to access the well-known spanish RAE dictionary programatically. It exposes an easy API for fetching words and a commnad line utility for looking up words in the [official RAE dictionary](http://www.rae.es/). Access the demo site [here](https://tsur.github.io/rae)
+Rae provides a tiny library to access the well-known spanish RAE dictionary programatically. It exposes an easy API for fetching words and a commnad line utility for looking up words in the [official RAE dictionary](http://www.rae.es/). Access the demo site [here](https://tsur.github.io/node-rae)
 
 ## Setup
 

@@ -76,8 +76,7 @@
     "deploy:site": "node ./internals/scripts/gh-pages.js",
     "predeploy:server":
       "rimraf build && cross-env SERVER_PORT=8080 SERVER_CORS=\"https://tsur.github.io, http://zuri.website\" webpack --config internals/webpack/server.js --color -p --progress && cp internals/heroku/package.json build",
-    "deploy:server":
-      "git push heroku `git subtree split --prefix build master`:master --force",
+    "deploy:server": "git subtree push --prefix build heroku master",
     "deploy": "npm run deploy:server && npm run deploy:site",
     "validate": "npm run lint && npm run build:cli && npm run test",
     "semantic-release":

@@ -9,7 +9,7 @@
 
 **NOTE:** Access English Docs [Here](docs/en/README.md)
 
-Rae es una pequeña librería mediante la cual puedes acceder al diccionario público que la Real Academia de la Lengua Española proporciona en su [website oficial](http://www.rae.es/). Demo [aqui](https://tsur.github.io/rae).
+Rae es una pequeña librería mediante la cual puedes acceder al diccionario público que la Real Academia de la Lengua Española proporciona en su [website oficial](http://www.rae.es/). Demo [aqui](https://tsur.github.io/node-rae).
 
 ## Instalación
 
