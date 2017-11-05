@@ -19,9 +19,7 @@ const plugins = [
     failOnError: true, // show a warning when there is a circular dependency
   }),
   new webpack.DefinePlugin({
-    'process.env': {
-      BROWSER: true,
-    },
+    SERVICE_URL: JSON.stringify(process.env.SERVICE_URL || 'http://localhost:3000/'),
   }),
 ];
 

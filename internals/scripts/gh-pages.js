@@ -5,5 +5,5 @@ ghpages.publish(path.join(__dirname, '..', '..', 'build'), (err) => {
   if (err) {
     return console.log('Error', err);
   }
-  return console.log('Deploy to gh-pages');
+  return console.log('Deployed to gh-pages');
 });

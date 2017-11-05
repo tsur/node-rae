@@ -45,5 +45,10 @@
         "config": "./internals/webpack/lib.js"
       }
     }
+  },
+  "globals": {
+    "SERVICE_URL": true,
+    "SERVER_CORS": true,
+    "SERVER_PORT": true
   }
 }

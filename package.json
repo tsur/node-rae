@@ -24,6 +24,7 @@
     "babel-register": "^6.26.0",
     "cheerio": "^1.0.0-rc.2",
     "circular-dependency-plugin": "^4.2.1",
+    "cp": "^0.2.0",
     "cross-env": "^5.1.1",
     "css-loader": "^0.28.7",
     "eslint": "^4.10.0",
@@ -70,9 +71,13 @@
     "build":
       "npm run build:lib && npm run build:cli && npm run build:site && npm run build:server",
     "lint": "eslint . --ignore-path .gitignore --ignore-pattern internals",
+    "predeploy:site":
+      "rimraf build && cross-env SERVICE_URL=https://rae-api.herokuapp.com/ webpack --config internals/webpack/site.js --color -p --progress",
     "deploy:site": "node ./internals/scripts/gh-pages.js",
-    "deploy:server": "git push heroku master",
-    "predeploy": "npm run build",
+    "predeploy:server":
+      "rimraf build && cross-env SERVER_PORT=8080 SERVER_CORS=\"https://tsur.github.io, http://zuri.website\" webpack --config internals/webpack/server.js --color -p --progress && cp internals/heroku/package.json build",
+    "deploy:server":
+      "git push heroku `git subtree split --prefix build master`:master --force",
     "deploy": "npm run deploy:server && npm run deploy:site",
     "validate": "npm run lint && npm run build:cli && npm run test",
     "semantic-release":

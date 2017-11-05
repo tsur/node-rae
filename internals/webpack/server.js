@@ -12,6 +12,10 @@ const plugins = [
     exclude: /a\.js|node_modules/, // exclude node_modules
     failOnError: true, // show a warning when there is a circular dependency
   }),
+  new webpack.DefinePlugin({
+    SERVER_PORT: JSON.stringify(process.env.SERVER_PORT || '3000'),
+    SERVER_CORS: JSON.stringify(process.env.SERVER_CORS || '*'),
+  }),
 ];
 
 module.exports = require('./base')({
