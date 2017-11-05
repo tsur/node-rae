@@ -3,7 +3,6 @@ import raeLogo from 'site/rae.png';
 import fetch from 'isomorphic-fetch';
 
 const ENTER_KEY = 13;
-const SERVER_URL = SERVICE_URL || 'http://localhost:3000/';
 
 async function searchContent(word) {
   const loaderElement = document.querySelector('.loader');
@@ -13,7 +12,9 @@ async function searchContent(word) {
     matchesContentElement.remove();
     loaderElement.classList.remove('hidden');
     matchesElement.classList.add('hidden');
-    const serverResponse = await fetch(`${SERVER_URL}search/${encodeURI(word)}`, { method: 'GET' });
+    const serverResponse = await fetch(`${URL}search/${encodeURI(word)}`, {
+      method: 'GET',
+    });
     const matches = await serverResponse.json();
     const matchesContent = document.createElement('div');
     if (!matches.multipleMatches) {

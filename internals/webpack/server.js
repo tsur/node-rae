@@ -13,8 +13,8 @@ const plugins = [
     failOnError: true, // show a warning when there is a circular dependency
   }),
   new webpack.DefinePlugin({
-    SERVER_PORT: JSON.stringify(process.env.SERVER_PORT || '3000'),
-    SERVER_CORS: JSON.stringify(process.env.SERVER_CORS || '*'),
+    CORS: JSON.stringify(process.env.CORS || '*'),
+    PROD: JSON.stringify(process.env.PROD),
   }),
 ];
 
@@ -24,6 +24,8 @@ module.exports = require('./base')({
   // Don't use hashes in dev mode for better performance
   output: {
     filename: 'server.js',
+    library: 'Server',
+    libraryTarget: 'umd',
   },
 
   // Add development plugins
@@ -32,4 +34,6 @@ module.exports = require('./base')({
   performance: {
     hints: false,
   },
+
+  target: 'node',
 });

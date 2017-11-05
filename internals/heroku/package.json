@@ -8,12 +8,11 @@
   "description": "Simple Rae Dictionary Library",
   "keywords": ["dictionary", "rae", "spanish", "words", "definition", "lema"],
   "license": "MIT",
-  "main": "./server.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/tsur/node-rae.git"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node index.js"
   }
 }

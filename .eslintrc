@@ -47,8 +47,7 @@
     }
   },
   "globals": {
-    "SERVICE_URL": true,
-    "SERVER_CORS": true,
-    "SERVER_PORT": true
+    "CORS": true,
+    "PROD": true
   }
 }

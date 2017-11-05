@@ -1,8 +1,6 @@
 import express from 'express';
 import RaeClient from 'lib';
 
-const PORT = SERVER_PORT || 3000;
-const CORS = SERVER_CORS;
 const app = express();
 const Rae = RaeClient.create();
 
@@ -38,4 +36,10 @@ app.use((req, res, next) => {
 app.get('/search/:word', search);
 app.get('/fetch/:id', fetch);
 
-app.listen(process.env.PORT || PORT, () => console.log(`Example app listening on port ${PORT}!`));
+if (!PROD) {
+  app.set('port', 3000);
+  app.listen(app.get('port'), () =>
+    console.log(`Example app listening on port ${app.get('port')}!`));
+}
+
+export default app;
