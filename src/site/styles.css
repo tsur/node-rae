@@ -50,8 +50,13 @@ body {
   padding: 1em 0;
 }
 .header .logo {
-  width: 300px;
+  height: 350px;
+  width: 260px;
   opacity: 0.85;
+}
+.fetch {
+  cursor: pointer;
+  text-decoration: underline;
 }
 .search-bar {
   font-family: "Raleway", "sans-serif";
@@ -62,7 +67,7 @@ body {
   outline: none;
   border: none;
   padding: 0.2em;
-  top: 232px;
+  top: 196px;
   left: 50%;
   margin-left: -200px;
   position: absolute;
@@ -76,40 +81,56 @@ body {
   margin: auto;
   transition: all 0.5s;
   -webkit-filter: grayscale(0);
+  width: 60%;
+  height: calc(100% - 510px);
 }
 .search-results.blurred {
   -webkit-filter: grayscale(1) blur(1px);
 }
-.search-results .matches {
-  width: 60%;
-  height: 300px;
+.search-results .matches .definitions {
   margin: auto;
-  margin-bottom: 35px;
+  width: 100%;
+  height: 100%;
   overflow-y: auto;
 }
-.search-results .matches::-webkit-scrollbar-track {
+.search-results .matches .definitions::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   background-color: rgba(167, 228, 255, 0.2);
 }
-.search-results .matches::-webkit-scrollbar {
+.search-results .matches .definitions::-webkit-scrollbar {
   width: 12px;
   background-color: transparent;
 }
-.search-results .matches::-webkit-scrollbar-thumb {
+.search-results .matches .definitions::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: rgba(167, 228, 255, 0.6);
 }
+.search-results .matches .definitions p::selection {
+  color: rgba(167, 228, 255, 0.2);
+}
 .copyright {
   text-align: center;
+  margin-top: 25px;
+}
+.copy {
+  width: 105px;
+  margin: auto;
+  padding: 5px;
+  color: #fffafa;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  border-radius: 3px;
+  background-color: #1f4e75;
+  font-size: 12px;
 }
 .hidden {
   display: none !important;
 }
 .clear {
   clear: both;
-  margin-bottom: 45px;
 }
 .loader {
   width: 128px;
@@ -147,11 +168,6 @@ body {
   100% {
     transform: scale(0.7);
     opacity: 0.1;
-  }
-}
-@media screen and (min-width: 320px) {
-  .search-results {
-    width: 320px;
   }
 }
 @media screen and (min-width: 640px) {
