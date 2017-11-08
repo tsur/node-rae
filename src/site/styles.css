@@ -87,6 +87,9 @@ body {
 .search-results.blurred {
   -webkit-filter: grayscale(1) blur(1px);
 }
+.search-results .matches {
+  text-align: center;
+}
 .search-results .matches .definitions {
   margin: auto;
   width: 100%;
@@ -114,7 +117,8 @@ body {
   text-align: center;
   margin-top: 25px;
 }
-.copy {
+.copy,
+.share {
   width: 105px;
   margin: auto;
   padding: 5px;
@@ -125,6 +129,9 @@ body {
   border-radius: 3px;
   background-color: #1f4e75;
   font-size: 12px;
+}
+.center {
+  text-align: center;
 }
 .hidden {
   display: none !important;
@@ -168,30 +175,5 @@ body {
   100% {
     transform: scale(0.7);
     opacity: 0.1;
-  }
-}
-@media screen and (min-width: 640px) {
-  .search-results {
-    width: 640px;
-  }
-}
-@media screen and (min-width: 960px) {
-  .search-results {
-    width: 960px;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .search-results {
-    width: 1280px;
-  }
-}
-@media screen and (min-width: 1600px) {
-  .search-results {
-    width: 1600px;
-  }
-}
-@media screen and (min-width: 1920px) {
-  .search-results {
-    width: 85%;
   }
 }
