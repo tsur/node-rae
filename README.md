@@ -1,6 +1,6 @@
 
 [![Build Status](https://travis-ci.org/Tsur/node-rae.png)](https://travis-ci.org/Tsur/node-rae)
-[![MIT License](https://img.shields.io/npm/l/es6-lib-template.svg?style=flat-square)](http://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Coverage Status](https://coveralls.io/repos/github/Tsur/node-rae/badge.svg?branch=inestable)](https://coveralls.io/github/Tsur/node-rae?branch=inestable)
