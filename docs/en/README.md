@@ -24,7 +24,7 @@ $ npm install rae
 $ npm install --global rae
 ```
 
-![Example1](docs/examples/rae.gif?raw=true)
+![Example1](../examples/rae.gif?raw=true)
 
 ## Command line
 
