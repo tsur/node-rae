@@ -24,6 +24,8 @@ $ npm install rae
 $ npm install -g rae
 ```
 
+![Example1](docs/examples/rae.gif?raw=true)
+
 ## Uso
 
 Si has realizado la instalación global, simplemente ejecuta rae en la consola para ver la ayuda en línea. Un ejemplo básico es el siguiente:
