@@ -5,11 +5,11 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Coverage Status](https://coveralls.io/repos/github/Tsur/node-rae/badge.svg?branch=inestable)](https://coveralls.io/github/Tsur/node-rae?branch=inestable)
 
-## Descripcion
+## Descripción
 
 **NOTE:** Access English Docs [Here](docs/en/README.md)
 
-Rae es una pequeña librería mediante la cual puedes acceder al diccionario público que la Real Academia de la Lengua Española proporciona en su [website oficial](http://www.rae.es/). Demo [aqui](https://tsur.github.io/node-rae).
+Rae es una pequeña librería mediante la cual puedes acceder al diccionario público que la Real Academia de la Lengua Española proporciona en su [website oficial](http://www.rae.es/). Demo [aquí](https://tsur.github.io/node-rae).
 
 ## Instalación
 
