@@ -1,4 +1,5 @@
-import { isEmpty, keys } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
+import keys from 'lodash/keys';
 import Readline from 'readline';
 import minimist from 'minimist';
 import RaeClient from 'lib';

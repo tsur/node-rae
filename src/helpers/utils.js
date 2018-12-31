@@ -1,6 +1,8 @@
-import { isString, isEmpty } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
+import isString from 'lodash/isString';
 
-const wordRegex = /^[a-z]+$/i;
+// i flag is not effective on non-US-ASCII characters, so we need to add the upper cases
+const wordRegex = /^(?:[aeiouAEIOU]\u0341|[uU]\u0308|[nN]\u0303|[a-zA-ZáéíóúüÁÉÍÓÚÜñÑ])+$/;
 
 export const isAWord = (word) => isString(word) && !isEmpty(word) && wordRegex.test(word);
 
