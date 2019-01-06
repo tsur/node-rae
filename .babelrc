@@ -1,6 +1,11 @@
 {
-  "presets": ["latest"],
-  "env": {
-    "test": {}
-  }
+  "presets": [
+    ["@babel/preset-env", {
+      "loose": true,
+      "modules": "commonjs",
+      "targets": {
+        "node": "current"
+      }
+    }]
+  ]
 }

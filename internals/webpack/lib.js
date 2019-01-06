@@ -15,7 +15,16 @@ const plugins = [
 ];
 
 module.exports = require('./base')({
-  entry: ['babel-polyfill', path.join(process.cwd(), 'src/lib/index.js')],
+  // entry: ['babel-polyfill', path.join(process.cwd(), 'src/lib/index.js')],
+  entry: [path.join(process.cwd(), 'src/lib/index.js')],
+
+
+  externals : {
+    cheerio: 'cheerio',
+    lodash: 'lodash',
+    'isomorphic-fetch': 'isomorphic-fetch',
+    
+  },
 
   // Don't use hashes in dev mode for better performance
   output: {

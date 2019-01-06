@@ -7,6 +7,7 @@ const webpack = require('webpack');
 
 module.exports = (options) => ({
   entry: options.entry,
+  externals: options.externals,
   output: Object.assign(
     {
       // Compile into js/build.js
@@ -15,20 +16,21 @@ module.exports = (options) => ({
     options.output
   ), // Merge with env dependent settings
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/, // Transform all .js files required somewhere with Babel
         loader: 'babel-loader',
         exclude: (modulePath) => modulePath.includes('node_modules'),
-      },
-      {
-        test: /\.json$/,
-        loader: 'json-loader',
+        
       },
       {
         test: /\.html$/,
         loader: 'html-loader',
       },
+      // {
+      //   test: /\.json$/,
+      //   loader: 'json-loader',
+      // },
       {
         // Do not transform vendor's CSS with CSS-modules
         // The point is that they remain in global scope.

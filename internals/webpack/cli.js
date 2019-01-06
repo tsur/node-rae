@@ -24,7 +24,8 @@ const plugins = [
 ];
 
 module.exports = require('./base')({
-  entry: ['babel-polyfill', path.join(process.cwd(), 'src/cli/index.js')],
+  // entry: ['babel-polyfill', path.join(process.cwd(), 'src/cli/index.js')],
+  entry: [path.join(process.cwd(), 'src/cli/index.js')],
 
   // Don't use hashes in dev mode for better performance
   output: {
