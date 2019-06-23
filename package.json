@@ -16,7 +16,9 @@
   ],
   "license": "MIT",
   "main": "build/lib.js",
-  "files": ["build"],
+  "files": [
+    "build"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/tsur/node-rae.git"
@@ -44,7 +46,7 @@
     "gh-pages": "^1.0.0",
     "ghooks": "^2.0.0",
     "html-loader": "^0.5.1",
-    "html-webpack-plugin": "^2.30.1",
+    "html-webpack-plugin": "^3.2.0",
     "htmlparser2": "^3.9.2",
     "imports-loader": "^0.7.1",
     "jest-cli": "^21.2.1",
@@ -78,7 +80,7 @@
     "lint": "eslint . --ignore-path .gitignore --ignore-pattern internals",
     "predeploy:site": "rimraf build && cross-env URL=https://rae-api.herokuapp.com/ webpack --config internals/webpack/site.js --color -p --progress",
     "deploy:site": "node ./internals/scripts/gh-pages.js",
-    "predeploy:server": "rimraf build && cross-env PROD=true CORS=\"https://tsur.github.io, http://zuri.website\" webpack --config internals/webpack/server.js --color -p --progress",
+    "predeploy:server": "rimraf build && cross-env PROD=true CORS=\"https://tsur.github.io, http://zuri.rocks\" webpack --config internals/webpack/server.js --color -p --progress",
     "deploy:server": "rimraf rae-api && git clone https://git.heroku.com/rae-api.git && cp build/server.js rae-api && cp internals/heroku/package.json rae-api && cp internals/heroku/Procfile rae-api && cp internals/heroku/index.js rae-api && cd rae-api && git add . && git commit -m \"Deploy to heroku\" && git push origin master && cd .. && rimraf rae-api",
     "deploy": "npm run deploy:server && npm run deploy:site",
     "validate": "npm run lint && npm run build:cli && npm run test",

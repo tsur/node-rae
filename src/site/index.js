@@ -23,7 +23,7 @@ async function getContent(word, action) {
     loaderElement.classList.remove('hidden');
     matchesElement.classList.add('hidden');
     urlElement.classList.add('hidden');
-    urlElement.textContent = `http://zuri.website/rae?${action === 'search'
+    urlElement.textContent = `http://zuri.rocks/rae?${action === 'search'
       ? 'buscar'
       : 'id'}=${encodeURI(word)}`;
     const serverResponse = await fetch(`${URL}${action}/${encodeURI(word)}`, {
