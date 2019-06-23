@@ -31,17 +31,19 @@ function parseData(domAsString) {
   const result = { multipleMatches: false, items: [] };
   return (resolve, reject) => {
     try {
+      const multipleMatchesSelector = 'body.dle ul li a[href^=fetch]';
+      const singleMatchSelector = 'body p.j';
       const $ = cheerio.load(domAsString);
-      result.multipleMatches = !!$('body ul li a').length;
+      result.multipleMatches = !!$(multipleMatchesSelector).length;
       if (!result.multipleMatches) {
-        $('body p').each((i, elem) => result.items.push({ match: $(elem).text() }));
+        $(singleMatchSelector).each((i, elem) => result.items.push({ match: $(elem).text() }));
       } else {
-        $('body ul li a').each((i, elem) =>
+        $(multipleMatchesSelector).each((i, elem) =>
           result.items.push({
             match: $(elem).text(),
             id: $(elem)
               .attr('href')
-              .replace(RAE_FETCH_ACTION, ''),
+              .replace(RAE_FETCH_ACTION, '').split('|')[0],
           }));
       }
 

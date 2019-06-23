@@ -4,7 +4,7 @@
     "email": "zurisadai.pabon@gmail.com"
   },
   "name": "rae",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Simple Rae Dictionary Library",
   "keywords": [
     "dictionary",
@@ -16,6 +16,7 @@
   ],
   "license": "MIT",
   "main": "build/lib.js",
+  "files": ["build"],
   "repository": {
     "type": "git",
     "url": "https://github.com/tsur/node-rae.git"
